@@ -10,7 +10,7 @@ class AddProduct(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = ()
 
-    def post(self, request):
+    def post(self, request, *args, **kwargs):
         serializer = ProductListSerializers(data=request.data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
@@ -41,10 +41,23 @@ class ProductListView(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = ()
 
-    def get(self, request):
+    def get(self, request, *args, **kwargs):
         queryset = ProductList.objects.all()
         serializer = ProductListSerializers(queryset, many=True)
         return ApiResponse(data={'data': serializer.data,
                                  },
                            code=200,
                            msg='success')
+
+
+class DelProduct(APIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = ()
+
+    def delete(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        product_obj = ProductList.objects.get(pk=pk)
+        product_obj.delete()
+        return ApiResponse(msg='Del Success', data={'id': pk}, code=200
+
+                           )

@@ -27,4 +27,5 @@ class ProductListSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = ProductList
-        fields = '__all__'
+        # fields = '__all__'
+        exclude = ["createTime","lastUpdateTime"]

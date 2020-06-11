@@ -36,7 +36,7 @@
       <el-main>
         <!-- 列表 -->
         <el-table :data="prodList" style="width: 100%">
-          <el-table-column label="项目名称" width="180" >
+          <el-table-column label="项目名称" width="180">
             <template slot-scope="scope">
               <i class="el-icon-time"></i>
               <router-link
@@ -57,7 +57,7 @@
             </template>
           </el-table-column>
 
-          <el-table-column label="描述" width="180" >
+          <el-table-column label="描述" width="180">
             <template slot-scope="scope">
               <span>{{ scope.row.desc }}</span>
             </template>
@@ -106,12 +106,12 @@
 
     <!-- 编辑 -->
     <el-dialog title="编辑项目" :visible.sync="edProButton">
-      <el-form :model="form" :rules="rules" ref="form" >
+      <el-form :model="form" :rules="rules" ref="form">
         <el-form-item label="项目名称" :label-width="formLabelWidth" prop="productName">
           <el-input v-model="form.productName" auto-complete="off"></el-input>
         </el-form-item>
-         <el-form-item label="版本" :label-width="formLabelWidth" prop="version">
-          <el-input  v-model="form.version" auto-complete="off"></el-input>
+        <el-form-item label="版本" :label-width="formLabelWidth" prop="version">
+          <el-input v-model="form.version" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="类型" :label-width="formLabelWidth" prop="productType">
           <el-select v-model="form.productType" placeholder="请选择类型">
@@ -152,12 +152,6 @@ export default {
         productType: "",
         desc: ""
       },
-      editform: {
-        productName: "",
-        version: "",
-        productType: "",
-        desc: ""
-      },
       // 验证
       rules: {
         productName: [
@@ -178,6 +172,11 @@ export default {
   },
   mounted() {
     this.getProList();
+  },
+  computed: {
+    id() {
+      return this.$route.query.id
+    }
   },
   methods: {
     getProList() {
@@ -219,18 +218,18 @@ export default {
       });
     },
     handleEdit(index, row) {
-      this.edProButton = true
+      this.edProButton = true;
       this.form = Object.assign({}, row);
     },
     editsubmit(form) {
       this.$refs[form].validate(valid => {
         if (valid) {
           this.$axios({
-            method: "post",
-            url: "spo/Editprod",
+            method: "put",
+            url: "spo/Editprod/" + this.form.id,
             data: this.form
           }).then(res => {
-            this.dialogTableVisible = false;
+            this.edProButton = false;
             this.$refs[form].resetFields();
             if (res.data.code === 200) {
               this.$message.success("Add Success");
