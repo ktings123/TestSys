@@ -1,6 +1,9 @@
 from rest_framework import serializers
+from rest_framework.settings import api_settings
 from spo.models import parameterType, HTTP_CHOICE, productType, \
     ApiInfo, Usr, ProductList
+
+dataTimeForm = api_settings.DATE_FORMAT
 
 
 class APiSerializers(serializers.ModelSerializer):
@@ -25,7 +28,9 @@ class ProductListSerializers(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     productType = serializers.ChoiceField(choices=productType)
 
+    # lastUpdateTime = serializers.DateTimeField(format=dataTimeForm, input_formats=dataTimeForm, read_only=True)
+
     class Meta:
         model = ProductList
-        # fields = '__all__'
-        exclude = ["createTime","lastUpdateTime"]
+        # fields = "__all__"
+        exclude = ["createTime", "lastUpdateTime"]

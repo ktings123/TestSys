@@ -34,6 +34,7 @@ class ApiInfo(models.Model):
     requestParameterType = models.CharField(max_length=30, verbose_name='参数类型', choices=parameterType)
     requestParameter = models.CharField(max_length=1024, verbose_name='请求参数')
 
+
     class Meta:
         ordering = ('-id',)
 
@@ -41,7 +42,7 @@ class ApiInfo(models.Model):
 class ProductList(models.Model):
     id = models.AutoField(primary_key=True)
     productName = models.CharField(max_length=50, verbose_name='名称')
-    version = models.CharField(max_length=30, verbose_name='版本号')
+    version = models.IntegerField(verbose_name='版本号')
     productType = models.CharField(max_length=30, verbose_name='项目类型', choices=productType)
     desc = models.CharField(max_length=10000, blank=True,null=True,verbose_name='备注')
     createTime = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')

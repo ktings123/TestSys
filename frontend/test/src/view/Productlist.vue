@@ -74,13 +74,13 @@
     </el-container>
 
     <!-- 新建 -->
-    <el-dialog title="新建项目" :visible.sync="dialogTableVisible">
+    <el-dialog title="新建项目" :visible.sync="dialogTableVisible" @close="handleCancl()">
       <el-form :model="form" :rules="rules" ref="form">
         <el-form-item label="项目名称" :label-width="formLabelWidth" prop="productName">
           <el-input v-model="form.productName"></el-input>
         </el-form-item>
         <el-form-item label="版本" :label-width="formLabelWidth" prop="version">
-          <el-input v-model="form.version"></el-input>
+          <el-input v-model.number="form.version"></el-input>
         </el-form-item>
 
         <el-form-item label="类型" :label-width="formLabelWidth" prop="productType">
@@ -98,23 +98,23 @@
         </el-form-item>
 
         <el-form-item>
-          <el-button @click="dialogTableVisible = false">取 消</el-button>
+          <!-- <el-button @click="handleCancl('form')">取 消</el-button> -->
           <el-button type="primary" @click="submit('form') ">确 定</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
 
     <!-- 编辑 -->
-    <el-dialog title="编辑项目" :visible.sync="edProButton">
-      <el-form :model="form" :rules="rules" ref="form">
+    <el-dialog title="编辑项目" :visible.sync="edProButton" >
+      <el-form :model="editform" :rules="rules" ref="editform">
         <el-form-item label="项目名称" :label-width="formLabelWidth" prop="productName">
-          <el-input v-model="form.productName" auto-complete="off"></el-input>
+          <el-input v-model="editform.productName" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="版本" :label-width="formLabelWidth" prop="version">
-          <el-input v-model="form.version" auto-complete="off"></el-input>
+          <el-input v-model.number="editform.version" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="类型" :label-width="formLabelWidth" prop="productType">
-          <el-select v-model="form.productType" placeholder="请选择类型">
+          <el-select v-model="editform.productType" placeholder="请选择类型">
             <el-option
               v-for="item in option "
               :label="item.label"
@@ -124,7 +124,7 @@
           </el-select>
         </el-form-item>
         <el-form-item label="项目描述" :label-width="formLabelWidth" prop="desc">
-          <el-input type="textarea" v-model="form.desc" auto-complete="off"></el-input>
+          <el-input type="textarea" v-model="editform.desc" auto-complete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -152,13 +152,20 @@ export default {
         productType: "",
         desc: ""
       },
+      editform: {
+        productName: "",
+        version: "",
+        productType: "",
+        desc: ""
+      },
       // 验证
       rules: {
         productName: [
           { required: true, message: "请输入项目名称", trigger: "blur" },
-          { max: 5, message: "", trigger: "blur" }
+          { max: 50, message: "项目名称过长", trigger: "blur" }
         ],
-        version: [{ required: true, message: "请输入版本", trigger: "blur" }],
+        version: [{ required: true, message: "请输入版本", trigger: "blur" },
+                  {type:'number',message:'请输入数字'}],
         productType: [
           { required: true, message: "请选择类型", trigger: "change" }
         ]
@@ -219,18 +226,22 @@ export default {
     },
     handleEdit(index, row) {
       this.edProButton = true;
-      this.form = Object.assign({}, row);
+      this.editform = Object.assign({}, row);
     },
-    editsubmit(form) {
-      this.$refs[form].validate(valid => {
+    handleCancl(){
+      this.$refs['form'].resetFields();
+      
+    },
+    editsubmit(editform) {
+      this.$refs['editform'].validate(valid => {
         if (valid) {
           this.$axios({
             method: "put",
-            url: "spo/Editprod/" + this.form.id,
-            data: this.form
+            url: "spo/Editprod/" + this.editform.id,
+            data: this.editform
           }).then(res => {
             this.edProButton = false;
-            this.$refs[form].resetFields();
+            this.$refs['editform'].resetFields();
             if (res.data.code === 200) {
               this.$message.success("Add Success");
             }

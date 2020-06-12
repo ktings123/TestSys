@@ -10,9 +10,9 @@ urlpatterns = [
     url(r'api/$', ApiView.as_view()),
     url(r'api/(?P<pk>[0-9]+)', DetailApiView.as_view()),
     url(r'product', ProductListView.as_view()),
-    url(r'Addprod/$', AddProduct.as_view()),
+    url(r'Addprod', AddProduct.as_view()),
     url(r'Editprod/(?P<pk>\d+)', EditProduct.as_view()),
-    url(r'Delprod/(?P<pk>\d+)/$',DelProduct.as_view())
+    url(r'Delprod/(?P<pk>\d+)',DelProduct.as_view())
 
     # url(r'user', views.index),
     # url(r'views1', views.in_a),

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
+    'DATETIME_FORMAT ': ('%Y-%m-%d %H:%M:%S',),
 
 }
 
@@ -91,7 +92,7 @@ DATABASES = {
         'HOST': '192.168.10.10',
         'PORT': '3306',
         'OPTIONS': {
-                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
 
     }
@@ -122,9 +123,12 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Shanghai'
 
+DATETIME_INPUT_FORMATS = '%Y-%m-%d %H:%M:%S'
+DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
+
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = False
 
