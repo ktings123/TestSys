@@ -42,8 +42,14 @@ class ProductListView(APIView):
     permission_classes = ()
 
     def get(self, request, *args, **kwargs):
-        queryset = ProductList.objects.all()
-        serializer = ProductListSerializers(queryset, many=True)
+        pk = kwargs.get('pk')
+        if pk:
+            prod_obj = ProductList.objects.get(pk=pk)
+            serializer = ProductListSerializers(prod_obj)
+
+        else:
+            queryset = ProductList.objects.all()
+            serializer = ProductListSerializers(queryset, many=True)
         return ApiResponse(data={'data': serializer.data,
                                  },
                            code=200,

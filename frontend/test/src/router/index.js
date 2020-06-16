@@ -25,7 +25,7 @@ export default new Router({
       name:'ProdMenu',
       component:layout,
       children:[
-        { path:'',name:'ProductInfo', component:()=>import ('../view/ProductInfo.vue')},
+        { path:'/',name:'ProductInfo', component:()=>import ('../view/ProductInfo.vue')},
       ]
     },
    

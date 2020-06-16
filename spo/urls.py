@@ -3,19 +3,16 @@ from django.conf.urls import url, include
 from . import views
 from rest_framework import routers
 from spo.Project.apiDetail import ApiView, DetailApiView
-from spo.Project.ProductList import AddProduct, ProductListView, EditProduct,DelProduct
+from spo.Project.ProductList import AddProduct, ProductListView, EditProduct, DelProduct
 
 urlpatterns = [
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'api/$', ApiView.as_view()),
-    url(r'api/(?P<pk>[0-9]+)', DetailApiView.as_view()),
-    url(r'product', ProductListView.as_view()),
-    url(r'Addprod', AddProduct.as_view()),
-    url(r'Editprod/(?P<pk>\d+)', EditProduct.as_view()),
-    url(r'Delprod/(?P<pk>\d+)',DelProduct.as_view())
+    path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path(r'api/$', ApiView.as_view()),
+    path(r'api/<int:pk>', DetailApiView.as_view()),
+    path(r'product', ProductListView.as_view()),
+    path(r'product/<int:pk>', ProductListView.as_view()),
+    path(r'Addprod', AddProduct.as_view()),
+    path(r'Editprod/<int:pk>', EditProduct.as_view()),
+    path(r'Delprod/<int:pk>', DelProduct.as_view())
+    ]
 
-    # url(r'user', views.index),
-    # url(r'views1', views.in_a),
-    # path('',views.index,name='index'),
-    # path('',views.index2,name='index2'),
-]

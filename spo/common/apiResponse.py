@@ -13,7 +13,7 @@ class ApiResponse(Response):
         Setting 'renderer' and 'media_type' will typically be deferred,
         For example being set automatically by the `APIView`.
         """
-        super(Response, self).__init__(None, status=status)
+        super().__init__(None, status=status)
 
         if isinstance(data, Serializer):
             msg = (

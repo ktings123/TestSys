@@ -43,7 +43,8 @@ INSTALLED_APPS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'DATETIME_FORMAT ': ('%Y-%m-%d %H:%M:%S',),
+    'DATETIME_FORMAT ': [('%Y-%m-%d %H:%M:%S'), ],
+    "DATE_INPUT_FORMATS": [("%Y-%m-%d %H:%M:%S"), ],
 
 }
 

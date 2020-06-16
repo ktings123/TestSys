@@ -4,26 +4,29 @@
       <el-col :span="6">
         <el-card class="box-card">
           <h1>111</h1>
-          <div></div>
+          <div>项目名称</div>
         </el-card>
       </el-col>
 
       <el-col :span="6">
         <el-card class="box-card">
           <h1>111</h1>
-          <div></div>
+          <div>版本</div>
         </el-card>
       </el-col>
 
       <el-col :span="6">
         <el-card class="box-card">
           <h1></h1>
-          <div></div>
+          <div>接口相关</div>
         </el-card>
       </el-col>
 
       <el-col :span="6">
-        <el-card class="box-card"></el-card>
+        <el-card class="box-card">
+          <h1></h1>
+          <div>项目类型</div>
+        </el-card>
       </el-col>
     </el-row>
 
@@ -31,11 +34,18 @@
       <el-col :span="6">
         <el-card class="box-card">
           <h1>111</h1>
-          <div></div>
+          <div>备注信息</div>
         </el-card>
       </el-col>
 
       <el-col :span="6">
+        <el-card class="box-card">
+          <h1></h1>
+          <div>项目组成员</div>
+        </el-card>
+      </el-col>
+
+      <!-- <el-col :span="6">
         <el-card class="box-card">
           <h1></h1>
           <div></div>
@@ -47,14 +57,7 @@
           <h1></h1>
           <div></div>
         </el-card>
-      </el-col>
-
-      <el-col :span="6">
-        <el-card class="box-card">
-          <h1></h1>
-          <div></div>
-        </el-card>
-      </el-col>
+      </el-col> -->
     </el-row>
   </div>
 </template>
@@ -64,17 +67,14 @@ export default {
   data() {
     return {
       tableData: null,
-      requestParameterType: "",
-      name: "",
-      httpType: "",
-      requestType: "",
-      baseUrl: "",
-      apiUrl: "",
-      requestParameter: ""
+      productName: "",
+      version: "",
+      productType: "",
+      desc: ""
     };
   },
   mounted() {
-    this.getList();
+    // this.getList();
   },
   computed: {
     prd_id() {
@@ -83,22 +83,18 @@ export default {
   },
   methods: {
     getList() {
-      this.loading = true
+      this.loading = true;
       this.$axios.get("/spo/api/" + this.prd_id).then(res => {
         if (res.data.code === 200) {
           let resp = res.data.data.data;
-          console.log(resp)
-          this.requestParameterType
-          this.name = resp.name
-          this.httpType = resp.httpType
-          this.requestType =resp.requestParameterType
-          this.baseUrl = resp.baseUrl
-          this.apiUrl =resp.apiUrl
-          this.requestParameter = resp.requestParameterType
-
-          
-          
-          
+          console.log(resp);
+          this.requestParameterType;
+          this.name = resp.name;
+          this.httpType = resp.httpType;
+          this.requestType = resp.requestParameterType;
+          this.baseUrl = resp.baseUrl;
+          this.apiUrl = resp.apiUrl;
+          this.requestParameter = resp.requestParameterType;
         }
       });
     },

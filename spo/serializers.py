@@ -28,9 +28,9 @@ class ProductListSerializers(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     productType = serializers.ChoiceField(choices=productType)
 
-    # lastUpdateTime = serializers.DateTimeField(format=dataTimeForm, input_formats=dataTimeForm, read_only=True)
+    # lastUpdateTime = serializers.DateTimeField(format=dataTimeForm, input_formats=dataTimeForm, write_only=True)
 
     class Meta:
         model = ProductList
         # fields = "__all__"
-        exclude = ["createTime", "lastUpdateTime"]
+        exclude = ["createTime","lastUpdateTime"]
