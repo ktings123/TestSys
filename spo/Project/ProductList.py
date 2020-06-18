@@ -63,7 +63,6 @@ class DelProduct(APIView):
     def delete(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         product_obj = ProductList.objects.get(pk=pk)
-        product_obj.delete()
-        return ApiResponse(msg='Del Success', data={'id': pk}, code=200
-
-                           )
+        if product_obj.delete():
+            return ApiResponse(msg='Del Success', data={'id': pk}, code=200
+                         )

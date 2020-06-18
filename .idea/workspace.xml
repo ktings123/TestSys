@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a0a17262-5194-42b9-adfe-58a63b450d80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test/src/view/ProductInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/src/view/ProductInfo.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/Project/ProductList.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/ProductList.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/common/apiResponse.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/common/apiResponse.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
