@@ -3,28 +3,28 @@
     <el-row :gutter="6">
       <el-col :span="6">
         <el-card class="box-card">
-          <h1>111</h1>
+          <h1>{{productName}}</h1>
           <div>项目名称</div>
         </el-card>
       </el-col>
 
       <el-col :span="6">
         <el-card class="box-card">
-          <h1>111</h1>
+          <h1>{{version}}</h1>
           <div>版本</div>
         </el-card>
       </el-col>
 
       <el-col :span="6">
         <el-card class="box-card">
-          <h1></h1>
+          <h1><router-link :to="{name:'api'}">2</router-link></h1>
           <div>接口相关</div>
         </el-card>
       </el-col>
 
       <el-col :span="6">
         <el-card class="box-card">
-          <h1></h1>
+          <h1>{{productType}}</h1>
           <div>项目类型</div>
         </el-card>
       </el-col>
@@ -33,7 +33,7 @@
     <el-row :gutter="6">
       <el-col :span="6">
         <el-card class="box-card">
-          <h1>111</h1>
+          <h1>{{desc}}</h1>
           <div>备注信息</div>
         </el-card>
       </el-col>
@@ -45,19 +45,6 @@
         </el-card>
       </el-col>
 
-      <!-- <el-col :span="6">
-        <el-card class="box-card">
-          <h1></h1>
-          <div></div>
-        </el-card>
-      </el-col>
-
-      <el-col :span="6">
-        <el-card class="box-card">
-          <h1></h1>
-          <div></div>
-        </el-card>
-      </el-col> -->
     </el-row>
   </div>
 </template>
@@ -74,7 +61,7 @@ export default {
     };
   },
   mounted() {
-    // this.getList();
+    this.getDetail();
   },
   computed: {
     prd_id() {
@@ -82,19 +69,16 @@ export default {
     }
   },
   methods: {
-    getList() {
+    getDetail() {
       this.loading = true;
-      this.$axios.get("/spo/api/" + this.prd_id).then(res => {
+      this.$axios.get("/spo/product/" + this.prd_id).then(res => {
         if (res.data.code === 200) {
           let resp = res.data.data.data;
-          console.log(resp);
           this.requestParameterType;
-          this.name = resp.name;
-          this.httpType = resp.httpType;
-          this.requestType = resp.requestParameterType;
-          this.baseUrl = resp.baseUrl;
-          this.apiUrl = resp.apiUrl;
-          this.requestParameter = resp.requestParameterType;
+          this.productName = resp.productName;
+          this.version = resp.version;
+          this.productType = resp.productType;
+          this.desc = resp.desc;
         }
       });
     },

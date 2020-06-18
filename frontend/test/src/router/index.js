@@ -6,6 +6,7 @@ import Router from 'vue-router'
 import Productlist from '../view/Productlist.vue'
 import layout from '../components/layout.vue'
 
+
 Vue.use(Router)
 const originalPush = Router.prototype.push
 Router.prototype.push = function push (location) {
@@ -21,12 +22,19 @@ export default new Router({
       
     },
     {
-      path:'/ProductDetail',
+      path:'/Productlist',
       name:'ProdMenu',
       component:layout,
       children:[
-        { path:'/',name:'ProductInfo', component:()=>import ('../view/ProductInfo.vue')},
-      ]
+        { path:'/ProductDetail',name:'ProductInfo', 
+          component:()=>import ('../view/ProductInfo.vue'),
+          
+          children:[
+            
+          ]
+        },
+        {path:'/api',name:'api', component:()=>import ('../view/api.vue')}
+      ],
     },
    
   ]

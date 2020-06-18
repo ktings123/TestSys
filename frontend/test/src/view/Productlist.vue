@@ -40,7 +40,7 @@
             <template slot-scope="scope">
               <i class="el-icon-time"></i>
               <router-link
-                :to="{name:'ProdMenu',query:{product_id:scope.row.id}}"
+                :to="{name:'ProductInfo',query:{product_id:scope.row.id}}"
                 style="margin-left: 10px"
               >{{ scope.row.productName }}</router-link>
             </template>
@@ -105,7 +105,7 @@
     </el-dialog>
 
     <!-- 编辑 -->
-    <el-dialog title="编辑项目" :visible.sync="edProButton" >
+    <el-dialog title="编辑项目" :visible.sync="edProButton">
       <el-form :model="editform" :rules="rules" ref="editform">
         <el-form-item label="项目名称" :label-width="formLabelWidth" prop="productName">
           <el-input v-model="editform.productName" auto-complete="off"></el-input>
@@ -164,8 +164,10 @@ export default {
           { required: true, message: "请输入项目名称", trigger: "blur" },
           { max: 50, message: "项目名称过长", trigger: "blur" }
         ],
-        version: [{ required: true, message: "请输入版本", trigger: "blur" },
-                  {type:'number',message:'请输入数字'}],
+        version: [
+          { required: true, message: "请输入版本", trigger: "blur" },
+          { type: "number", message: "请输入数字" }
+        ],
         productType: [
           { required: true, message: "请选择类型", trigger: "change" }
         ]
@@ -182,20 +184,16 @@ export default {
   },
   computed: {
     id() {
-      return this.$route.query.id
+      return this.$route.query.id;
     }
   },
   methods: {
     getProList() {
-      this.loaing = true;
+      this.loading = true;
       this.$axios.get("spo/product").then(res => {
         if (res.data.code === 200) {
           this.prodList = res.data.data.data;
 
-          // this.productName = prodList.productName
-          // this.version =prodList.version
-          // this.productType = prodList.productType
-          // this.desc =prodList.desc
         }
       });
     },
@@ -228,12 +226,11 @@ export default {
       this.edProButton = true;
       this.editform = Object.assign({}, row);
     },
-    handleCancl(){
-      this.$refs['form'].resetFields();
-      
+    handleCancl() {
+      this.$refs["form"].resetFields();
     },
     editsubmit(editform) {
-      this.$refs['editform'].validate(valid => {
+      this.$refs["editform"].validate(valid => {
         if (valid) {
           this.$axios({
             method: "put",
@@ -241,15 +238,11 @@ export default {
             data: this.editform
           }).then(res => {
             this.edProButton = false;
-            this.$refs['editform'].resetFields();
+            this.$refs["editform"].resetFields();
             if (res.data.code === 200) {
               this.$message.success("Add Success");
             }
-
             this.getProList();
-            // this.$router.push({
-            //   path:''
-            // })
           });
         } else {
           console.log("error submit!!");
@@ -257,19 +250,23 @@ export default {
         }
       });
     },
-    handleDelete(index,row) {
-      console.log(index,row)
-      this.$axios({
-        method:'delete',
-        url:'spo/Delprod/'+row.id,
-      }).then(res=>{
-        this.edProButton = false
-        if (res.data.code === 200) {
+    handleDelete(index, row) {
+      this.$confirm("确定删除该项目吗？", "提示", {
+        type: "warning"
+      }).then(() => {
+          this.$axios({
+            method: "delete",
+            url: "spo/Delprod/" + row.id
+          }).then(res => {
+            this.edProButton = false;
+            if (res.data.code === 200) {
               this.$message.success("Del Success");
             }
 
             this.getProList();
-      })
+          });
+        })
+        .catch(() => {});
     },
     getPro() {
       pass;
