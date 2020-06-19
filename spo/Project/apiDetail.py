@@ -4,19 +4,28 @@ from spo.serializers import APiSerializers, UsrSerializers
 from spo.common.apiResponse import ApiResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import ParseError
-from rest_framework.response import Response
 
 
 class ApiView(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = ()
 
-    def get(self, request):
-        queryset = ApiInfo.objects.all().order_by('-id')
-        serializer = APiSerializers(queryset, many=True)
-        return ApiResponse(data=serializer.data,
+    def get(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        if pk:
+            api_obj = ApiInfo.objects.get(pk=pk)
+            serializer = APiSerializers(instance=api_obj)
+        else:
+            queryset = ApiInfo.objects.all().order_by('-id')
+            serializer = APiSerializers(queryset, many=True)
+        return ApiResponse(data={serializer.data},
                            code=200,
                            msg='success')
+
+
+class AddApi(ApiView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = ()
 
     def post(self, request):
         serializer = APiSerializers(data=request.data)
@@ -27,34 +36,45 @@ class ApiView(APIView):
             return ApiResponse(msg='fail', code=403, data={'data': serializer.errors})
 
 
+class EditApi(ApiView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = ()
+
+    def put(self, request, *args, **kwargs):
+        try:
+            pk = kwargs.get("pk")
+            data = request.data
+            api_obj = ApiInfo.objects.get(pk=pk)
+        except ParseError:
+            return ApiResponse(msg='RequestError', code=500, data=ParseError)
+        serializer = APiSerializers(instance=api_obj, data=data)
+        if serializer.is_valid(raise_exception=True):
+            serializer.save()
+            return ApiResponse(msg='success', code=200, data={'id': serializer.data.get('id')})
+
+
 class DetailApiView(APIView):
     authentication_classes = (TokenAuthentication,)
     permission_classes = ()
 
-    def get_detail(self, pk):
-        return ApiInfo.objects.get(pk=pk)
-
     # 查一个
-    def get(self, request, pk):
+    def get(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
         try:
-            data = request.data
+            api_obj = ApiInfo.objects.get(pk=pk)
         except ParseError:
             return ApiResponse(msg='RequestError', code=500, data=ParseError)
-        serializer = APiSerializers(self.get_detail(pk))
-        return ApiResponse(data={'data': serializer.data}, msg='success', code=200)
+        serializer = APiSerializers(instance=api_obj)
+        return ApiResponse(data={'id': serializer.data.get('id')}, msg='success', code=200)
 
-    # 更新一个
-    def post(self, request, pk):
-        try:
-            data = request.data
-        except ParseError:
-            return ApiResponse(msg='RequestError', code=500, data=ParseError)
-        serializer = APiSerializers(self.get_detail(pk), data=data)
-        if self.get_detail(pk) is not None and serializer.is_valid():
-            serializer.save()
-            return ApiResponse(msg='success', code=200, data={'id': serializer.data.get('id')})
+
+class DelApi(ApiView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = ()
 
     # 删一个
-    def delete(self, request, pk):
-        self.get_detail(pk).delete()
-        return ApiResponse(msg='success', code=200, data={'data': pk})
+    def delete(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        api_obj = ApiInfo.objects.get(pk=pk)
+        if api_obj.delete():
+            return ApiResponse(msg='success', code=200, data={'data': pk})

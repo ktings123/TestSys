@@ -44,8 +44,8 @@ class ApiInfo(models.Model):
     apiUrl = models.CharField(max_length=1024, verbose_name='接口地址')
     requestParameterType = models.CharField(max_length=30, verbose_name='参数类型', choices=parameterType)
     requestParameter = models.CharField(max_length=1024, verbose_name='请求参数')
-    # status = models.BooleanField(default=True,verbose_name='状态')
-    # productId = models.ForeignKey(ProductList, on_delete=models.CASCADE,verbose_name='所属项目')
+    status = models.BooleanField(default=True,verbose_name='状态')
+    productId = models.ForeignKey(ProductList, on_delete=models.CASCADE,verbose_name='所属项目')
 
     class Meta:
         ordering = ('-id',)

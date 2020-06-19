@@ -212,9 +212,7 @@ export default {
             }
 
             this.getProList();
-            // this.$router.push({
-            //   path:''
-            // })
+        
           });
         } else {
           console.log("error submit!!");

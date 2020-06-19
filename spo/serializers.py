@@ -10,6 +10,7 @@ class APiSerializers(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     requestParameterType = serializers.ChoiceField(choices=parameterType)
     httpType = serializers.ChoiceField(choices=HTTP_CHOICE)
+    productId = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = ApiInfo
@@ -33,4 +34,4 @@ class ProductListSerializers(serializers.ModelSerializer):
     class Meta:
         model = ProductList
         # fields = "__all__"
-        exclude = ["createTime","lastUpdateTime"]
+        exclude = ["createTime", "lastUpdateTime"]
