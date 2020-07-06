@@ -6,7 +6,7 @@ from spo.Project.apiDetail import *
 from spo.Project.ProductList import *
 
 urlpatterns = [
-    path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path(r'api', ApiView.as_view()),
     path(r'api/<int:pk>', DetailApiView.as_view()),
     path(r'Addapi', AddApi.as_view()),

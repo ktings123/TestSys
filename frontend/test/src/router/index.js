@@ -3,7 +3,6 @@ import Router from 'vue-router'
 
 
 
-import Productlist from '../view/Productlist.vue'
 import layout from '../components/layout.vue'
 
 
@@ -18,7 +17,7 @@ export default new Router({
     {
       path:'/Productlist',
       name:'Productlist',
-      component:Productlist,
+      component:()=>import('../view/Productlist.vue'),
       
     },
     {
@@ -26,8 +25,14 @@ export default new Router({
       name:'ProdMenu',
       component:layout,
       children:[
-        { path:'/ProductDetail',name:'ProductInfo', component:()=>import ('../view/ProductInfo.vue')},
-        {path:'/api',name:'api', component:()=>import ('../view/api.vue')}
+        {path:'/ProductDetail',name:'ProductInfo', component:()=>import ('../view/ProductInfo.vue'),},
+        {path:'/api',name:'api', component:()=>import ('../components/apiModel.vue'),
+          children:[
+          {path:"/apiList",name:'apiList',component:()=>import ('../view/apiList.vue')},
+          {path:"/AddApi",name:'AddApi',component:()=>import ('../view/addApi.vue')}
+        ]
+      },
+       
       ],
     },
    

@@ -183,9 +183,9 @@ export default {
     this.getProList();
   },
   computed: {
-    id() {
-      return this.$route.query.id;
-    }
+    // id() {
+    //   return this.$route.query.id;
+    // }
   },
   methods: {
     getProList() {

@@ -3,7 +3,16 @@ from django.db import models
 # Create your models here.
 
 HTTP_CHOICE = (
-    ('HTTPS', 'HTTP'),
+    ('HTTPS', 'HTTPS'),
+    ('HTTP', 'HTTP'),
+
+)
+
+RE_TYPE = (
+    ('GET', 'get'),
+    ('POST', 'get'),
+    ('PUT', 'put'),
+    ('DELETE', 'delete'),
 
 )
 
@@ -39,13 +48,14 @@ class ApiInfo(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50, verbose_name='接口名称')
     httpType = models.CharField(max_length=50, verbose_name='协议类型', choices=HTTP_CHOICE)
-    requestType = models.CharField(max_length=50, verbose_name='请求方式')
-    baseUrl = models.CharField(max_length=1024, verbose_name='基础地址')
+    requestType = models.CharField(max_length=50, verbose_name='请求方式', choices=RE_TYPE)
+    header = models.CharField(max_length=1024, verbose_name='请求头')
     apiUrl = models.CharField(max_length=1024, verbose_name='接口地址')
     requestParameterType = models.CharField(max_length=30, verbose_name='参数类型', choices=parameterType)
     requestParameter = models.CharField(max_length=1024, verbose_name='请求参数')
-    status = models.BooleanField(default=True,verbose_name='状态')
-    productId = models.ForeignKey(ProductList, on_delete=models.CASCADE,verbose_name='所属项目')
+    response = models.CharField(max_length=1024, verbose_name='响应内容')
+    status = models.BooleanField(default=True, verbose_name='状态')
+    productId = models.ForeignKey(ProductList, on_delete=models.CASCADE, verbose_name='所属项目')
 
     class Meta:
         ordering = ('-id',)

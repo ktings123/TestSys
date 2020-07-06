@@ -17,7 +17,7 @@
 
       <el-col :span="6">
         <el-card class="box-card">
-          <h1><router-link :to="{name:'api'}">2</router-link></h1>
+          <h1><router-link :to="{name:'apiList',query:{product_id:$route.query.product_id}}">2</router-link></h1>
           <div>接口相关</div>
         </el-card>
       </el-col>
