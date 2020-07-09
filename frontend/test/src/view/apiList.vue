@@ -5,7 +5,7 @@
         <el-input placeholder="项目名称"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="creapi('form')">查询</el-button>
+        <el-button type="primary" @click="select('form')">查询</el-button>
 
         <router-link :to="{name:'AddApi',query:{product_id:$route.query.product_id}}">
           <el-button type="primary" @click="dialogTableVisible=true">新建</el-button>
@@ -42,27 +42,8 @@ export default {
     };
   },
   methods: {
-    creapi(form) {
-      this.$refs[form].validate(valid => {
-        if (valid) {
-          this.$axios({
-            method: "post",
-            url: "spo/Addprod",
-            data: this.form
-          }).then(res => {
-            this.dialogTableVisible = false;
-            this.$refs[form].resetFields();
-            if (res.data.code === 200) {
-              this.$message.success("Add Success");
-            }
-
-            this.getApiList();
-          });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
+    select(form) {
+     pass
     },
     handleCancl() {
       this.$refs["form"].resetFields();

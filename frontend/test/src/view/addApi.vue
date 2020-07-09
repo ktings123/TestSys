@@ -1,9 +1,9 @@
 <template>
   <div>
-    
     <router-link :to="{name:'apiList',query:{product_id:this.$route.query.product_id}}">
-      <el-button class='return-list-button'>
-        <i class="el-icon-d-arrow-left" style="margin-right: 5px"></i>Back!</el-button>
+      <el-button class="return-list-button">
+        <i class="el-icon-d-arrow-left" style="margin-right: 5px"></i>Back!
+      </el-button>
     </router-link>
     <el-form :model="form" ref="form">
       <el-form-item label="接口名称" :label-width="formLabelWidth" prop="name">
@@ -76,8 +76,13 @@
             <el-radio v-model="form.requestParameterType" label="raw">源raw</el-radio>
           </el-col>
         </el-row>
-
-        <el-table :data="form.requestParameter" border stripe>
+        <!-- 表单 -->
+        <el-table
+          v-if="form.requestParameterType=='form-data'"
+          :data="form.requestParameter"
+          border
+          stripe
+        >
           <el-table-column prop="name" label="参数名">
             <template slot-scope="scope">
               <el-input v-model="scope.row.name" placeholder="参数名"></el-input>
@@ -88,11 +93,33 @@
               <el-input v-model="scope.row.value" placeholder="参数值"></el-input>
             </template>
           </el-table-column>
+
+          <!-- 加减行 -->
+          <el-table-column label="操作">
+            <template slot-scope="scope">
+              <el-button
+                v-if="scope.$index==form.requestParameter.length-1"
+                class="el-icon-plus"
+                @click="addRow(scope.$index)"
+              ></el-button>
+              <el-button v-else class="el-icon-delete" @click="delRow(scope.$index)"></el-button>
+            </template>
+          </el-table-column>
         </el-table>
+        <!-- 源 -->
+        <el-form-item  prop="reqRaw">
+          <el-input
+            v-if="form.requestParameterType=='raw'"
+            v-model.trim="reqRaw"
+            type="textarea"
+            :rows='6'
+            placeholder="requestRaw"
+          ></el-input>
+        </el-form-item>
       </el-form-item>
 
-      <el-form-item label="项目描述" :label-width="formLabelWidth" prop="desc">
-        <el-input type="textarea" v-model="form.desc" auto-complete="off"></el-input>
+      <el-form-item label="返回结果" :label-width="formLabelWidth" prop="response">
+        <el-input v-model.trim="form.response" type="textarea" :rows="6" placeholder="Response"></el-input>
       </el-form-item>
 
       <el-form-item>
@@ -125,6 +152,7 @@ export default {
         { label: "Web", value: "Web" },
         { label: "App", value: "App" }
       ],
+      reqRaw: "",
       form: {
         name: "",
         header: [
@@ -143,21 +171,55 @@ export default {
             value: ""
           }
         ],
-        responseParameter: "",
+        response: "",
         status: "",
         productId: this.$route.query.product_id
       }
     };
   },
   methods: {
-    submit() {}
+    submit(form) {
+      this.$refs["form"].validate(valid => {
+        if (valid) {
+          this.$axios({
+            method: "post",
+            url: "spo/Addapi" ,
+            data: this.form
+          }).then(res => {
+            this.$refs["form"].resetFields();
+            if (res.data.code === 200) {
+              this.$message.success("Add Success");
+            }
+            this.$router.push({name:"apiList",query:{product_id:$route.query.product_id}});
+          });
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    addRow(index) {
+      this.form.requestParameter.push({
+        name: "",
+        value: ""
+      });
+    },
+    delRow(index) {
+      this.form.requestParameter.splice(index, 1);
+      if (this.form.requestParameter.length == 0) {
+        this.form.requestParameter.push({
+          name: "",
+          value: ""
+        });
+      }
+    }
   }
 };
 </script>
 <style lang="css">
-  .return-list-button{
-    margin-top: 0px;
-        margin-bottom: 10px;
-        border-radius: 25px;
-  }
+.return-list-button {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border-radius: 25px;
+}
 </style>
