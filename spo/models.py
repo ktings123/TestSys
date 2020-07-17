@@ -29,8 +29,13 @@ productType = (
 
 class Usr(models.Model):
     id = models.AutoField(primary_key=True)
+    create_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     user_name = models.CharField(max_length=50, verbose_name='用戶名称')
     user_id = models.CharField(max_length=50, verbose_name='账号')
+    user_status = models.CharField(max_length=2, verbose_name='状态')
+
+    class Meta:
+        ordering = ('-create_time',)
 
 
 class ProductList(models.Model):

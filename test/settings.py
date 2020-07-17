@@ -37,14 +37,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'spo',
+    'astershop',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'DATETIME_FORMAT ': [('%Y-%m-%d %H:%M:%S'), ],
-    "DATE_INPUT_FORMATS": [("%Y-%m-%d %H:%M:%S"), ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAdminUser',
+    ),
+    # 'DATETIME_FORMAT ': [('%Y-%m-%d %H:%M:%S'), ],
+    # "DATE_INPUT_FORMATS": [("%Y-%m-%d %H:%M:%S"), ],
 
 }
 

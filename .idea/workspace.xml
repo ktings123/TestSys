@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a17262-5194-42b9-adfe-58a63b450d80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/astershop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/admin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/apps.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/migrations/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/product/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/product/products.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/service/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/service/login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/shopUrl.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astershop/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test/src/view/addApi.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/src/view/addApi.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test/src/view/apiList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/src/view/apiList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/Project/ProductList.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/ProductList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
