@@ -33,6 +33,7 @@ class Usr(models.Model):
     user_name = models.CharField(max_length=50, verbose_name='用戶名称')
     user_id = models.CharField(max_length=50, verbose_name='账号')
     user_status = models.CharField(max_length=2, verbose_name='状态')
+    password = models.CharField(max_length=100,verbose_name='密码')
 
     class Meta:
         ordering = ('-create_time',)

@@ -20,7 +20,7 @@ from spo import urls
 from astershop import shopUrl
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path(r'^spo/', include(urls)),
-    path(r'^shop/', include(shopUrl))
+    url(r'^spo/', include(urls)),
+    url(r'^shop/', include(shopUrl))
 
 ]
