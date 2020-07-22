@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a17262-5194-42b9-adfe-58a63b450d80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/service/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/astershop/service/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/astershop/service/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astershop/product/products.py" beforeDir="false" afterPath="$PROJECT_DIR$/astershop/product/products.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astershop/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/service/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astershop/service/login.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/astershop/shopUrl.py" beforeDir="false" afterPath="$PROJECT_DIR$/astershop/shopUrl.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/migrations/0002_auto_20200612_1545.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/migrations/0003_auto_20200619_1447.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/migrations/0004_auto_20200706_0933.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/Project/ProductList.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/ProductList.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +49,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ting\Desktop\Auto\Django\opps" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

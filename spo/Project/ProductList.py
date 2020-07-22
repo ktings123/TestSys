@@ -4,11 +4,12 @@ from spo.serializers import ProductListSerializers
 from spo.common.apiResponse import ApiResponse
 from spo.models import ProductList
 from rest_framework.exceptions import ParseError
+from rest_framework.permissions import IsAuthenticated
 
 
 class AddProduct(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
         serializer = ProductListSerializers(data=request.data)
@@ -21,7 +22,7 @@ class AddProduct(APIView):
 
 class EditProduct(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     # 单整体改
     def put(self, request, *args, **kwargs):
@@ -39,7 +40,7 @@ class EditProduct(APIView):
 
 class ProductListView(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
@@ -58,7 +59,7 @@ class ProductListView(APIView):
 
 class DelProduct(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def delete(self, request, *args, **kwargs):
         pk = kwargs.get('pk')

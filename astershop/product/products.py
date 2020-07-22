@@ -4,11 +4,12 @@ from rest_framework.exceptions import ParseError
 from spo.common.apiResponse import ApiResponse
 from astershop.serializers import ProductInfoSerializers
 from astershop.models import Product_info
+from rest_framework.permissions import IsAuthenticated
 
 
 class Addproduct(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
         serializer = ProductInfoSerializers(data=request.data)
@@ -22,17 +23,17 @@ class Addproduct(APIView):
 
 class ProductView(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         if pk:
-            produ_obj = Product_info.object.get(pk=pk)
+            produ_obj = Product_info.objects.get(pk=pk)
             serializer = ProductInfoSerializers(produ_obj)
         else:
-            queryset = Product_info.object.all()
+            queryset = Product_info.objects.all()
             serializer = ProductInfoSerializers(queryset, many=True)
-        return ApiResponse(data={'data': serializer.data,
+        return ApiResponse(data={'product': serializer.data,
                                  },
                            code=200,
                            msg='success')
@@ -40,13 +41,13 @@ class ProductView(APIView):
 
 class EditProduct(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def push(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         try:
             data = request.data
-            produ_obj = Product_info.object.get(pk=pk)
+            produ_obj = Product_info.objects.get(pk=pk)
         except ParseError:
             return ApiResponse(msg='RequestError', code=500, data=ParseError)
         serializer = ProductInfoSerializers(instance=produ_obj, data=data)
@@ -57,7 +58,7 @@ class EditProduct(APIView):
 
 class DelProduct(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def delete(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
