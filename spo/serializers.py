@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.settings import api_settings
 from spo.models import parameterType, HTTP_CHOICE, productType, \
-    ApiInfo,  ProductList
+    ApiInfo, ProductList, Task, TestCase
 
 dataTimeForm = api_settings.DATE_FORMAT
 
@@ -35,3 +35,19 @@ class ProductListSerializers(serializers.ModelSerializer):
         model = ProductList
         # fields = "__all__"
         exclude = ["createTime", "lastUpdateTime"]
+
+
+class TaskSerializers(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Task
+        exclude = ["createTime", ]
+
+
+class TestCaseSerializers(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = TestCase
+        exclude = ["createTime", ]
