@@ -17,7 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls import url
 from spo import urls
+from astershop import shopUrl
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^spo/',include(urls)),
+    url(r'^spo/', include(urls)),
+    url(r'^shop/', include(shopUrl))
+
 ]

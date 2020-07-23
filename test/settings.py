@@ -37,14 +37,24 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'spo',
+    'astershop',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
-    'DATETIME_FORMAT ': [('%Y-%m-%d %H:%M:%S'), ],
-    "DATE_INPUT_FORMATS": [("%Y-%m-%d %H:%M:%S"), ],
+    'DEFAULT_PERMISSION_CLASSES': (
+        # 'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+
+
+    )
+    # 'DATETIME_FORMAT ': [('%Y-%m-%d %H:%M:%S'), ],
+    # "DATE_INPUT_FORMATS": [("%Y-%m-%d %H:%M:%S"), ],
 
 }
 
@@ -146,6 +156,8 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:7777'
 ]
+
+REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 60
 # CORS_ORIGIN_ALLOW_ALL = True
 
 # Static files (CSS, JavaScript, Images)
