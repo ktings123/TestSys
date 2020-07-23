@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.settings import api_settings
 from spo.models import parameterType, HTTP_CHOICE, productType, \
-    ApiInfo, Usr, ProductList
+    ApiInfo,  ProductList
 
 dataTimeForm = api_settings.DATE_FORMAT
 
@@ -19,10 +19,10 @@ class APiSerializers(serializers.ModelSerializer):
         # exclude=[]
 
 
-class UsrSerializers(serializers.ModelSerializer):
-    class Meta:
-        model = Usr
-        fields = '__all__'
+# class UsrSerializers(serializers.ModelSerializer):
+#     class Meta:
+#         model = Usr
+#         fields = '__all__'
 
 
 class ProductListSerializers(serializers.ModelSerializer):

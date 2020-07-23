@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a17262-5194-42b9-adfe-58a63b450d80" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/opps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/opps.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/migrations/0002_auto_20200612_1545.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/migrations/0003_auto_20200619_1447.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/migrations/0004_auto_20200706_0933.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/Project/apiDetail.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/apiDetail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/serializers.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

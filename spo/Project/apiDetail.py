@@ -1,4 +1,4 @@
-from spo.models import ApiInfo, Usr
+from spo.models import ApiInfo
 from rest_framework.views import APIView
 from spo.serializers import APiSerializers, UsrSerializers
 from spo.common.apiResponse import ApiResponse
