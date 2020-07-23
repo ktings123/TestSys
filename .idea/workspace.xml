@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a17262-5194-42b9-adfe-58a63b450d80" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/opps.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/opps.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test/src/view/addApi.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/src/view/addApi.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/test/src/view/apiList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/src/view/apiList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/test/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/test/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/migrations/0002_auto_20200612_1545.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/migrations/0003_auto_20200619_1447.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/migrations/0004_auto_20200706_0933.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/settings.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,27 +38,16 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="opps" type="Python.DjangoServer" factoryName="Django server">
@@ -109,35 +102,22 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="496" y="264" width="1092" height="658" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585562909888">
+    <state x="417" y="230" key="SettingsEditor" timestamp="1594563361957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="496" y="264" width="1092" height="658" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585562909888" />
-    <state x="975" y="372" key="FileChooserDialogImpl" timestamp="1585562707406">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="975" y="372" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585562707406" />
-    <state x="512" y="222" key="SettingsEditor" timestamp="1588726453820">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="512" y="222" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1588726453820" />
+    <state x="417" y="230" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1594563361957" />
     <state x="882" y="428" key="com.intellij.ide.util.TipDialog" timestamp="1588899617105">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="882" y="428" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1588899617105" />
-    <state x="872" y="356" width="672" height="678" key="search.everywhere.popup" timestamp="1585277111262">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="872" y="356" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585277111262" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
