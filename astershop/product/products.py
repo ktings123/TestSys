@@ -5,6 +5,7 @@ from spo.common.apiResponse import ApiResponse
 from astershop.serializers import ProductInfoSerializers
 from astershop.models import Product_info
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 
 class Addproduct(APIView):
@@ -33,10 +34,15 @@ class ProductView(APIView):
         else:
             queryset = Product_info.objects.all()
             serializer = ProductInfoSerializers(queryset, many=True)
-        return ApiResponse(data={'product': serializer.data,
-                                 },
-                           code=200,
-                           msg='success')
+        # return ApiResponse(data={'product': serializer.data,
+        #                          },
+        #                    code=200,
+        #                    msg='success')
+            return Response({
+                'code':Response.status_code,
+                'product':serializer.data,
+
+            })
 
 
 class EditProduct(APIView):
@@ -50,6 +56,7 @@ class EditProduct(APIView):
             produ_obj = Product_info.objects.get(pk=pk)
         except ParseError:
             return ApiResponse(msg='RequestError', code=500, data=ParseError)
+
         serializer = ProductInfoSerializers(instance=produ_obj, data=data)
         if serializer.is_valid(raise_exception=True):
             serializer.save()
