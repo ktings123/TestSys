@@ -1,6 +1,6 @@
-from spo.models import ApiInfo, Usr
+from spo.models import ApiInfo
 from rest_framework.views import APIView
-from spo.serializers import APiSerializers, UsrSerializers
+from spo.serializers import APiSerializers
 from spo.common.apiResponse import ApiResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import ParseError

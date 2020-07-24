@@ -109,6 +109,10 @@ DATABASES = {
     }
 }
 
+
+# AUTH_USER_MODEL = "app名.表名"
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

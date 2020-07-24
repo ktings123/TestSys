@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -26,17 +27,10 @@ productType = (
     ('App', 'App')
 )
 
-
-class Usr(models.Model):
-    id = models.AutoField(primary_key=True)
-    create_time = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
-    user_name = models.CharField(max_length=50, verbose_name='用戶名称')
-    user_id = models.CharField(max_length=50, verbose_name='账号')
-    user_status = models.BooleanField(default=True, verbose_name='状态')
-    password = models.CharField(max_length=100,verbose_name='密码')
-
-    class Meta:
-        ordering = ('-create_time',)
+#
+# class Usr(AbstractUser):
+#     class Meta:
+#         ordering = ('-create_time',)
 
 
 class ProductList(models.Model):
