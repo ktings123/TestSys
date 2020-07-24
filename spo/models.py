@@ -22,10 +22,11 @@ parameterType = (
     ('form-data', 'form-data')
 )
 
-productType = (
+projectType = (
     ('Web', 'Web'),
     ('App', 'App')
 )
+
 
 #
 # class Usr(AbstractUser):
@@ -33,15 +34,18 @@ productType = (
 #         ordering = ('-create_time',)
 
 
-class ProductList(models.Model):
+class ProjectList(models.Model):
     id = models.AutoField(primary_key=True)
     productName = models.CharField(max_length=50, verbose_name='名称')
     version = models.IntegerField(verbose_name='版本号')
-    productType = models.CharField(max_length=30, verbose_name='项目类型', choices=productType)
-    desc = models.CharField(max_length=10000, blank=True, null=True, verbose_name='备注')
-    # status = models.BooleanField(default=True,verbose_name='状态')
+    projectType = models.CharField(max_length=30, verbose_name='项目类型', choices=projectType)
+    desc = models.CharField(max_length=1024, blank=True, null=True, verbose_name='备注')
+    status = models.BooleanField(default=True, verbose_name='状态')
     createTime = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
-    lastUpdateTime = models.DateTimeField(auto_now=True, verbose_name='更新时间')
+    updateTime = models.DateTimeField(auto_now=True, verbose_name='更新时间')
+
+    def __str__(self):
+        return self.productName
 
 
 class ApiInfo(models.Model):
@@ -55,7 +59,31 @@ class ApiInfo(models.Model):
     requestParameter = models.CharField(max_length=1024, verbose_name='请求参数')
     response = models.CharField(max_length=1024, verbose_name='响应内容')
     status = models.BooleanField(default=True, verbose_name='状态')
-    productId = models.ForeignKey(ProductList, on_delete=models.CASCADE, verbose_name='所属项目')
+    productId = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
+
+    def __str__(self):
+        return self.name
 
     class Meta:
         ordering = ('-id',)
+
+
+class Task(models.Model):
+    id = models.AutoField(primary_key=True)
+    taskName = models.CharField(max_length=50, verbose_name='任务名称')
+    productId = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
+
+    def __str__(self):
+        return self.taskName
+
+
+class TestCase(models.Model):
+    id = models.AutoField(primary_key=True)
+    caseName = models.CharField(max_length=50, verbose_name='用例名称')
+    description = models.CharField(max_length=1024, blank=True, null=True, verbose_name='描述')
+    updateTime = models.DateTimeField(auto_now=True, verbose_name='更新时间')
+    project = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
+    caseId = models.ForeignKey(Task, on_delete=models.CASCADE, verbose_name='所属任务')
+
+    def __str__(self):
+        return self.caseName
