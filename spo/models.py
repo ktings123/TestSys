@@ -87,3 +87,11 @@ class TestCase(models.Model):
 
     def __str__(self):
         return self.caseName
+
+
+class TestResult(models.Model):
+    id = models.AutoField(primary_key=True)
+    api_id = models.OneToOneField(ApiInfo,on_delete=models.CASCADE,verbose_name='接口')
+    res_content = models.CharField(max_length=50, verbose_name='响应内容')
+    testResult = models.CharField(max_length=50, verbose_name='测试结果')
+    updateTime = models.DateTimeField(auto_now=True, verbose_name='更新时间')
