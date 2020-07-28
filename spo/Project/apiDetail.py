@@ -4,11 +4,12 @@ from spo.serializers import APiSerializers
 from spo.common.apiResponse import ApiResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import ParseError
+from rest_framework.permissions import IsAuthenticated
 
 
 class ApiView(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
@@ -25,7 +26,7 @@ class ApiView(APIView):
 
 class AddApi(ApiView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         serializer = APiSerializers(data=request.data)
@@ -38,7 +39,7 @@ class AddApi(ApiView):
 
 class EditApi(ApiView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     def put(self, request, *args, **kwargs):
         try:
@@ -55,7 +56,7 @@ class EditApi(ApiView):
 
 class DetailApiView(APIView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     # 查一个
     def get(self, request, *args, **kwargs):
@@ -70,7 +71,7 @@ class DetailApiView(APIView):
 
 class DelApi(ApiView):
     authentication_classes = (TokenAuthentication,)
-    permission_classes = ()
+    permission_classes = (IsAuthenticated,)
 
     # 删一个
     def delete(self, request, *args, **kwargs):

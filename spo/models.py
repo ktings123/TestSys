@@ -4,14 +4,14 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 HTTP_CHOICE = (
-    ('HTTPS', 'HTTPS'),
-    ('HTTP', 'HTTP'),
+    ('HTTPS', 'https'),
+    ('HTTP', 'http'),
 
 )
 
 RE_TYPE = (
     ('GET', 'get'),
-    ('POST', 'get'),
+    ('POST', 'post'),
     ('PUT', 'put'),
     ('DELETE', 'delete'),
 
@@ -36,16 +36,20 @@ projectType = (
 
 class ProjectList(models.Model):
     id = models.AutoField(primary_key=True)
-    productName = models.CharField(max_length=50, verbose_name='名称')
+    projectName = models.CharField(max_length=50, verbose_name='名称')
     version = models.IntegerField(verbose_name='版本号')
     projectType = models.CharField(max_length=30, verbose_name='项目类型', choices=projectType)
     desc = models.CharField(max_length=1024, blank=True, null=True, verbose_name='备注')
-    status = models.BooleanField(default=True, verbose_name='状态')
+    status = models.BooleanField(default=False, verbose_name='状态')
     createTime = models.DateTimeField(auto_now_add=True, verbose_name='创建时间')
     updateTime = models.DateTimeField(auto_now=True, verbose_name='更新时间')
 
     def __str__(self):
-        return self.productName
+        return self.projectName
+
+    def delete(self, using=None, keep_parents=False):
+        self.status = True
+        self.save()
 
 
 class ApiInfo(models.Model):
@@ -91,7 +95,7 @@ class TestCase(models.Model):
 
 class TestResult(models.Model):
     id = models.AutoField(primary_key=True)
-    api_id = models.OneToOneField(ApiInfo,on_delete=models.CASCADE,verbose_name='接口')
+    api_id = models.OneToOneField(ApiInfo, on_delete=models.CASCADE, verbose_name='接口')
     res_content = models.CharField(max_length=50, verbose_name='响应内容')
     testResult = models.CharField(max_length=50, verbose_name='测试结果')
     updateTime = models.DateTimeField(auto_now=True, verbose_name='更新时间')

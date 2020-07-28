@@ -10,13 +10,12 @@ class APiSerializers(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
     requestParameterType = serializers.ChoiceField(choices=parameterType)
     httpType = serializers.ChoiceField(choices=HTTP_CHOICE)
-    productId = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = ApiInfo
-        fields = '__all__'
+        # fields = '__all__'
         # 查询的时候不包括哪个字段
-        # exclude=[]
+        exclude = ['response']
 
 
 #
@@ -28,14 +27,14 @@ class APiSerializers(serializers.ModelSerializer):
 
 class ProductListSerializers(serializers.ModelSerializer):
     id = serializers.IntegerField(read_only=True)
-    productType = serializers.ChoiceField(choices=projectType)
+    projectType = serializers.ChoiceField(choices=projectType)
 
     # lastUpdateTime = serializers.DateTimeField(format=dataTimeForm, input_formats=dataTimeForm, write_only=True)
 
     class Meta:
         model = ProjectList
         # fields = "__all__"
-        exclude = ["createTime", "lastUpdateTime"]
+        exclude = ["createTime", "updateTime"]
 
 
 class TaskSerializers(serializers.ModelSerializer):

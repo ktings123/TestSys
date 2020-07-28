@@ -10,11 +10,11 @@ urlpatterns = [
     path(r'api', ApiView.as_view()),
     path(r'api/<int:pk>', DetailApiView.as_view()),
     path(r'Addapi', AddApi.as_view()),
-    path(r'Editpai', EditApi.as_view()),
+    path(r'Editapi', EditApi.as_view()),
     path(r'Delapi', DelApi.as_view()),
     path(r'product', ProductListView.as_view()),
     path(r'product/<int:pk>', ProductListView.as_view()),
-    path(r'Addprod', AddProduct.as_view()),
-    path(r'Editprod/<int:pk>', EditProduct.as_view()),
-    path(r'Delprod/<int:pk>', DelProduct.as_view())
+    path(r'Addpro', AddProduct.as_view()),
+    path(r'Editpro/<int:pk>', EditProduct.as_view()),
+    path(r'Delpro/<int:pk>', DelProduct.as_view())
 ]

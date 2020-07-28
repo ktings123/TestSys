@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.authentication import TokenAuthentication
 from spo.serializers import ProductListSerializers
 from spo.common.apiResponse import ApiResponse
-from spo.models import ProductList
+from spo.models import ProjectList
 from rest_framework.exceptions import ParseError
 from rest_framework.permissions import IsAuthenticated
 
@@ -29,7 +29,7 @@ class EditProduct(APIView):
         pk = kwargs.get('pk')
         try:
             data = request.data
-            product_obj = ProductList.objects.get(pk=pk)
+            product_obj = ProjectList.objects.get(pk=pk)
         except ParseError:
             return ApiResponse(msg='RequestError', code=500, data=ParseError)
         serializer = ProductListSerializers(instance=product_obj, data=data)
@@ -45,11 +45,11 @@ class ProductListView(APIView):
     def get(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
         if pk:
-            prod_obj = ProductList.objects.get(pk=pk)
+            prod_obj = ProjectList.objects.get(pk=pk)
             serializer = ProductListSerializers(prod_obj)
 
         else:
-            queryset = ProductList.objects.all()
+            queryset = ProjectList.objects.all()
             serializer = ProductListSerializers(queryset, many=True)
         return ApiResponse(data={'data': serializer.data,
                                  },
@@ -63,7 +63,7 @@ class DelProduct(APIView):
 
     def delete(self, request, *args, **kwargs):
         pk = kwargs.get('pk')
-        product_obj = ProductList.objects.get(pk=pk)
-        if product_obj.delete():
-            return ApiResponse(msg='Del Success', data={'id': pk}, code=200
+        product_obj = ProjectList.objects.get(pk=pk)
+        product_obj.delete()
+        return ApiResponse(msg='Del Success', data={'id': pk}, code=200
                          )

@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a17262-5194-42b9-adfe-58a63b450d80" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/spo/Api/aboutTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/Project/ProductList.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/ProductList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/Project/apiDetail.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/apiDetail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/migrations/0002_auto_20200712_2222.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/migrations/0002_usr_password.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,20 +47,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../httprunner-master" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="opps" type="Python.DjangoServer" factoryName="Django server">
@@ -109,15 +103,18 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="842" y="411" key="FileChooserDialogImpl" timestamp="1595829684058">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="842" y="411" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595829684058" />
     <state x="417" y="230" key="SettingsEditor" timestamp="1594563361957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
