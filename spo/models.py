@@ -61,7 +61,6 @@ class ApiInfo(models.Model):
     apiUrl = models.CharField(max_length=1024, verbose_name='接口地址')
     requestParameterType = models.CharField(max_length=30, verbose_name='参数类型', choices=parameterType)
     requestParameter = models.CharField(max_length=1024, verbose_name='请求参数')
-    response = models.CharField(max_length=1024, verbose_name='响应内容')
     status = models.BooleanField(default=True, verbose_name='状态')
     productId = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
 
@@ -70,6 +69,46 @@ class ApiInfo(models.Model):
 
     class Meta:
         ordering = ('-id',)
+
+
+class ApiHeaders(models.Model):
+    id = models.AutoField(primary_key=True)
+    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    head_key = models.CharField(max_length=1024, verbose_name='名称')
+    head_value = models.CharField(max_length=1024, verbose_name='值')
+
+    def __str__(self):
+        return self.head_key
+
+
+class ApiParameter(models.Model):
+    id = models.AutoField(primary_key=True)
+    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    par_key = models.CharField(max_length=1024, verbose_name='名称')
+    par_value = models.CharField(max_length=1024, verbose_name='值')
+    par_type = models.CharField(default="String", max_length=1024, verbose_name='参数类型',
+                                choices=(('Int', 'Int'), ('String', 'String')))
+    required = models.BooleanField(default=True, verbose_name="是否必填")
+    description = models.CharField(max_length=1024, blank=True, null=True, verbose_name="描述")
+
+    def __str__(self):
+        return self.par_key
+
+
+class ApiParRaw(models.Model):
+    id = models.AutoField(primary_key=True)
+    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    raw_data = models.TextField(blank=True, null=True, verbose_name='内容')
+
+
+class ApiResponse(models.Model):
+    id = models.AutoField(primary_key=True)
+    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    res_type = models.CharField(default="String", max_length=1024, verbose_name='参数类型',
+                                choices=(('Int', 'Int'), ('String', 'String')))
+    res_key = models.CharField(max_length=1024, verbose_name='名称')
+    res_value = models.CharField(max_length=1024, verbose_name='值')
+    description = models.CharField(max_length=1024, blank=True, null=True, verbose_name="描述")
 
 
 class Task(models.Model):

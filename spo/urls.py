@@ -4,6 +4,7 @@ from . import views
 from rest_framework import routers
 from spo.Project.apiDetail import *
 from spo.Project.ProductList import *
+from spo.test_api.tests import *
 
 urlpatterns = [
     path(r'api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -16,5 +17,6 @@ urlpatterns = [
     path(r'product/<int:pk>', ProductListView.as_view()),
     path(r'Addpro', AddProduct.as_view()),
     path(r'Editpro/<int:pk>', EditProduct.as_view()),
-    path(r'Delpro/<int:pk>', DelProduct.as_view())
+    path(r'Delpro/<int:pk>', DelProduct.as_view()),
+    path(r'test_api', Api_test_get.as_view()),
 ]

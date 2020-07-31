@@ -13,9 +13,9 @@ class APiSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = ApiInfo
-        # fields = '__all__'
+        fields = '__all__'
         # 查询的时候不包括哪个字段
-        exclude = ['response']
+        # exclude = ['response']
 
 
 #

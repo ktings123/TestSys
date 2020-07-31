@@ -19,7 +19,7 @@ class ApiView(APIView):
         else:
             queryset = ApiInfo.objects.all().order_by('-id')
             serializer = APiSerializers(queryset, many=True)
-        return ApiResponse(data={serializer.data},
+        return ApiResponse(data=serializer.data,
                            code=200,
                            msg='success')
 
