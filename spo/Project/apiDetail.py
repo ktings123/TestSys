@@ -1,6 +1,7 @@
-from spo.models import ApiInfo
+from spo.models import ApiInfo, ProjectList
 from rest_framework.views import APIView
-from spo.serializers import APiSerializers
+from spo.serializers import APiSerializers, ApiHeadersSerializers, \
+    ApiParameterSerializers, ApiParRawSerializers
 from spo.common.apiResponse import ApiResponse
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.exceptions import ParseError
@@ -29,9 +30,44 @@ class AddApi(ApiView):
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
+        try:
+            data = request.data
+        except ParseError:
+            return ApiResponse(status=ParseError.status_code, msg='参数错误')
+        proj_obj = ProjectList.objects.get(id=data['project_id'])
         serializer = APiSerializers(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            serializer.save()
+            # 先保存接口
+            serializer.save(ProjectList=proj_obj)
+            # 取出接口ID
+            api_id = serializer.data.get('id')
+            # 处理接口请求头
+            if len(data.get("header")):
+                for h in data.get("header"):
+                    h['api_id'] = api_id
+                    head = ApiHeadersSerializers(data=h)
+                    if head.is_valid(raise_exception=True):
+                        obj_api = ApiInfo.objects.get(id=api_id)
+                        # 保存请求头
+                        head.save(ApiInfo=obj_api)
+            # 处理接口请求form-data参数
+            if data.get('requestParameterType') == 'form-data':
+                if len(data.get('requestParameter')):
+                    for p in data.get('requestParameter'):
+                        p['api_id'] = api_id
+                        reqPar = ApiParameterSerializers(data=p)
+                        if reqPar.is_valid(raise_exception=True):
+                            obj_reqPar = ApiInfo.objects.get(id=api_id)
+                            # 保存请求参数
+                            reqPar.save(ApiInfo=obj_reqPar)
+            # 处理接口请求raw参数
+            else:
+                if len(data.get('requestParameter')):
+                    req_rawPar = ApiParRawSerializers(data=data.get('requestParameter'))
+                    if req_rawPar.is_valid(raise_exception=True):
+                        obj_rawPar = ApiInfo.objects.get(id=api_id)
+                        # 保存请求参数
+                        req_rawPar.save(ApiInfo=obj_rawPar)
             return ApiResponse(msg='success', code=200, data={'data': serializer.data.get('id')})
         else:
             return ApiResponse(msg='fail', code=403, data={'data': serializer.errors})

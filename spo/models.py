@@ -57,12 +57,10 @@ class ApiInfo(models.Model):
     name = models.CharField(max_length=50, verbose_name='接口名称')
     httpType = models.CharField(max_length=50, verbose_name='协议类型', choices=HTTP_CHOICE)
     requestType = models.CharField(max_length=50, verbose_name='请求方式', choices=RE_TYPE)
-    header = models.CharField(max_length=1024, verbose_name='请求头')
     apiUrl = models.CharField(max_length=1024, verbose_name='接口地址')
     requestParameterType = models.CharField(max_length=30, verbose_name='参数类型', choices=parameterType)
-    requestParameter = models.CharField(max_length=1024, verbose_name='请求参数')
     status = models.BooleanField(default=True, verbose_name='状态')
-    productId = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
+    project_id = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
 
     def __str__(self):
         return self.name
@@ -73,17 +71,20 @@ class ApiInfo(models.Model):
 
 class ApiHeaders(models.Model):
     id = models.AutoField(primary_key=True)
-    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    api_id = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
     head_key = models.CharField(max_length=1024, verbose_name='名称')
     head_value = models.CharField(max_length=1024, verbose_name='值')
 
     def __str__(self):
         return self.head_key
 
+    class Meta:
+        verbose_name = '请求头'
+
 
 class ApiParameter(models.Model):
     id = models.AutoField(primary_key=True)
-    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    api_id = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
     par_key = models.CharField(max_length=1024, verbose_name='名称')
     par_value = models.CharField(max_length=1024, verbose_name='值')
     par_type = models.CharField(default="String", max_length=1024, verbose_name='参数类型',
@@ -94,16 +95,22 @@ class ApiParameter(models.Model):
     def __str__(self):
         return self.par_key
 
+    class Meta:
+        verbose_name = '请求参数'
+
 
 class ApiParRaw(models.Model):
     id = models.AutoField(primary_key=True)
-    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    api_id = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
     raw_data = models.TextField(blank=True, null=True, verbose_name='内容')
+
+    class Meta:
+        verbose_name = '请求类型Raw'
 
 
 class ApiResponse(models.Model):
     id = models.AutoField(primary_key=True)
-    api = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
+    api_id = models.ForeignKey(ApiInfo, on_delete=models.CASCADE, verbose_name='所属接口')
     res_type = models.CharField(default="String", max_length=1024, verbose_name='参数类型',
                                 choices=(('Int', 'Int'), ('String', 'String')))
     res_key = models.CharField(max_length=1024, verbose_name='名称')
@@ -114,7 +121,7 @@ class ApiResponse(models.Model):
 class Task(models.Model):
     id = models.AutoField(primary_key=True)
     taskName = models.CharField(max_length=50, verbose_name='任务名称')
-    productId = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
+    project_id = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
 
     def __str__(self):
         return self.taskName
@@ -125,8 +132,8 @@ class TestCase(models.Model):
     caseName = models.CharField(max_length=50, verbose_name='用例名称')
     description = models.CharField(max_length=1024, blank=True, null=True, verbose_name='描述')
     updateTime = models.DateTimeField(auto_now=True, verbose_name='更新时间')
-    project = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
-    caseId = models.ForeignKey(Task, on_delete=models.CASCADE, verbose_name='所属任务')
+    project_id = models.ForeignKey(ProjectList, on_delete=models.CASCADE, verbose_name='所属项目')
+    caseId = models.ForeignKey(Task, on_delete=models.CASCADE, verbose_name='所属任务',blank=True)
 
     def __str__(self):
         return self.caseName

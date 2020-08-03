@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0a17262-5194-42b9-adfe-58a63b450d80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/spo/Api/aboutTest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/Project/ProductList.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/ProductList.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/astershop/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/Project/apiDetail.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/Project/apiDetail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spo/migrations/0001_initial.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/migrations/0002_auto_20200712_2222.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/migrations/0002_usr_password.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/spo/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/spo/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/spo/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,12 +35,15 @@
     </ignored-facets>
   </component>
   <component name="ProjectId" id="1ZYSBfZyibPwKS6oubzYg4kYWhn" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -75,6 +77,7 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -110,11 +113,46 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="842" y="411" key="FileChooserDialogImpl" timestamp="1595829684058">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="842" y="411" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1595829684058" />
+    <state width="1188" height="128" key="GridCell.Tab.0.bottom" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
+    <state width="1188" height="128" key="GridCell.Tab.0.center" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
+    <state width="1188" height="128" key="GridCell.Tab.0.left" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
+    <state width="1188" height="128" key="GridCell.Tab.0.right" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
+    <state width="1188" height="128" key="GridCell.Tab.1.bottom" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
+    <state width="1188" height="128" key="GridCell.Tab.1.center" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
+    <state width="1188" height="128" key="GridCell.Tab.1.left" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
+    <state width="1188" height="128" key="GridCell.Tab.1.right" timestamp="1596421542477">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1188" height="128" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1596421542477" />
     <state x="417" y="230" key="SettingsEditor" timestamp="1594563361957">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

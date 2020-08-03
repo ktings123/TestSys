@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from rest_framework.settings import api_settings
 from spo.models import parameterType, HTTP_CHOICE, projectType, \
-    ApiInfo, ProjectList, Task, TestCase
+    ApiInfo, ProjectList, Task, TestCase, ApiHeaders, ApiParameter, \
+    ApiParRaw, ApiResponse
 
 dataTimeForm = api_settings.DATE_FORMAT
 
@@ -16,6 +17,38 @@ class APiSerializers(serializers.ModelSerializer):
         fields = '__all__'
         # 查询的时候不包括哪个字段
         # exclude = ['response']
+
+
+class ApiHeadersSerializers(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = ApiHeaders
+        fields = '__all__'
+
+
+class ApiParameterSerializers(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = ApiParameter
+        fields = '__all__'
+
+
+class ApiParRawSerializers(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = ApiParRaw
+        fields = '__all__'
+
+
+class ApiResponseSerializers(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = ApiResponse
+        fields = '__all__'
 
 
 #
