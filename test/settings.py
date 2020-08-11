@@ -142,20 +142,16 @@ DATETIME_INPUT_FORMATS = '%Y-%m-%d %H:%M:%S'
 DATETIME_FORMAT = '%Y-%m-%d %H:%M:%S'
 
 USE_I18N = True
-
 USE_L10N = False
-
 USE_TZ = False
 
 STATIC_URL = '/static/'
-
 CORS_ALLOW_HEADERS = list(default_headers) + [
     'my-headers'
 ]
 CORS_ALLOW_METHODS = list(default_methods) + [
     'my-methods'
 ]
-
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:7777'
@@ -164,5 +160,11 @@ CORS_ORIGIN_WHITELIST = [
 REST_FRAMEWORK_TOKEN_EXPIRE_MINUTES = 60
 # CORS_ORIGIN_ALLOW_ALL = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# 发送服务器地址,端口,账号,密码
+EMAIL_HOST=''
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/

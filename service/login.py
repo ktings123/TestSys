@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout
 from django.conf import settings
 from rest_framework import status
-
+from rest_framework.permissions import IsAuthenticated
 import datetime
 from rest_framework.authentication import TokenAuthentication
 
@@ -42,7 +42,10 @@ obtain_auth_token = CustomAuthToken.as_view()
 
 
 # 注册
-class register(APIView):
+class Register(APIView):
+    authentication_classes = ()
+    permission_classes = ()
+
     def post(self, request, *args, **kwargs):
         data = request.data
         usr = data.get('username')
@@ -57,6 +60,9 @@ class register(APIView):
 
 # 登出
 class Logout(APIView):
+    authentication_classes = ()
+    permission_classes = ()
+
     def post(self, request):
         logout(request)
         return Response({
@@ -66,6 +72,9 @@ class Logout(APIView):
 
 # 改密码
 class ChangePwd(APIView):
+    authentication_classes = ()
+    permission_classes = ()
+
     def post(self, request):
         username = request.data.get('username')
         old_password = request.data.get('oldPassword')

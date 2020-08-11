@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework.settings import api_settings
 from spo.models import parameterType, HTTP_CHOICE, projectType, \
     ApiInfo, ProjectList, Task, TestCase, ApiHeaders, ApiParameter, \
-    ApiParRaw, ApiResponse
+    ApiParRaw, ApiResponse, SendEmail
 
 dataTimeForm = api_settings.DATE_FORMAT
 
@@ -84,3 +84,11 @@ class TestCaseSerializers(serializers.ModelSerializer):
     class Meta:
         model = TestCase
         fields = "__all__"
+
+
+class SendEmailSerializers(serializers.ModelSerializer):
+    id = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = SendEmail
+        exclude = ['createTime','status']
